@@ -14,12 +14,26 @@
   services.xserver.desktopManager.plasma6.enable = false;
   services.desktopManager.plasma6.enable = true; #vynuceni pouze waylandu
 
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
     firefox
-    
-    #  wget
+    blender
+    vlc
+    spotify
+    discord
+    kitty
+    vscode
+    gitkraken
+    docker-compose
   ];
   programs.firefox.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+    listenOptions = [ "/run/docker.sock" ];
+  };
+  systemd.services.docker.unitConfig.StopIdleTimeoutSec = "300";
 
   zramSwap.enable = true;
   zramSwap.algorithm = "zstd";
