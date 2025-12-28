@@ -43,6 +43,17 @@
   zramSwap.memoryPercent = 25;
   boot.kernel.sysctl."vm.swappiness" = 100;
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/home/michal/nixos-config";
+    dates = "weekly";
+    flags = [
+      "--update-input" "nixpkgs"
+      "--commit-lock-file"
+    ];
+    allowReboot = false;
+  };
+
   system.stateVersion = "25.11";
 }
 
