@@ -34,7 +34,7 @@
   users.users.michal = {
     isNormalUser = true;
     description = "Michal";
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     packages = with pkgs; [tree];
   };
 
