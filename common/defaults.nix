@@ -43,7 +43,7 @@
     git
     fastfetch
     kdePackages.ark
-    #  wget
+    ncdu
   ];
   programs.neovim = {
     enable = true;
