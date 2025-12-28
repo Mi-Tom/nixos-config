@@ -18,6 +18,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    ntfs3g
     firefox
     blender
     vlc
