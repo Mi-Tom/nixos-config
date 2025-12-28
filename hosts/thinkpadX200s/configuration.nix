@@ -10,8 +10,6 @@
 
   networking.hostName = "ThinkPad"; # Define your hostname.
 
-  programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
     firefox
     #  wget
