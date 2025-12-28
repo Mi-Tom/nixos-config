@@ -45,6 +45,10 @@
     kdePackages.ark
     #  wget
   ];
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   nix.gc = {
     automatic = true;
