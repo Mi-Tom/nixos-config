@@ -13,6 +13,7 @@
   services.displayManager.sddm.wayland.enable = true; # Povolení Waylandu
   services.xserver.desktopManager.plasma6.enable = false;
   services.desktopManager.plasma6.enable = true; #vynuceni pouze waylandu
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [konsole]; # odebrani konzole z kde plasmy
 
   nixpkgs.config.allowUnfree = true;
 
@@ -26,7 +27,9 @@
     vscode
     gitkraken
     docker-compose
+    libreoffice-qt
   ];
+  environment.variables.TERMINAL = "kitty"; # nastaveni kitty jako defaultniho terminalu
   programs.firefox.enable = true;
 
   virtualisation.docker = {
