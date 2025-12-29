@@ -17,8 +17,6 @@
   services.desktopManager.plasma6.enable = true; #vynuceni pouze waylandu
   environment.plasma6.excludePackages = with pkgs.kdePackages; [konsole]; # odebrani konzole z kde plasmy
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     ntfs3g
     firefox
