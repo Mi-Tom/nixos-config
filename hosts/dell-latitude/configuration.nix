@@ -5,18 +5,14 @@
     ../../common/defaults.nix
   ];
 
-  # Vypneme systemd-boot, pokud byl zapnutý
   boot.loader.systemd-boot.enable = false;
 
   boot.loader.grub = {
     enable = true;
-    # "efi" pro moderní systémy, "canTouchEfiVariables" umožní NixOS měnit boot pořadí
     device = "nodev"; # Pro EFI se nepoužívá /dev/sda, ale nodev
     efiSupport = true;
-    enableCryptodisk = false; # Nastav true jen pokud máš šifrovaný disk
-    
-    # Grafické téma (volitelné)
-    useOSProber = true; # DŮLEŽITÉ: Najde Windows na tvém sda4!
+    useOSProber = true;
+    timeout = 15;
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
