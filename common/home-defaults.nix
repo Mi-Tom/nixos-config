@@ -103,10 +103,9 @@
             };
           };
         }
+        # Widget pro zobrazení plochy
+        "org.kde.plasma.showdesktop"
       ];
     }];
-
-    # Widget pro zobrazení plochy
-    "org.kde.plasma.showdesktop"
   }
 }
