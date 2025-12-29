@@ -26,7 +26,7 @@
             home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+            home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
             home-manager.users.michal = import ./hosts/thinkpadX200s/home.nix;
           }
         ];
@@ -42,7 +42,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+            home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
             home-manager.users.michal = import ./hosts/dell-latitude/home.nix;
           }
         ];
