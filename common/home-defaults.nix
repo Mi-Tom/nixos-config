@@ -1,4 +1,68 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+  let
+    commonWidgets = [
+      "org.kde.plasma.kickoff"
+      
+      # Připnuté aplikace
+      {
+        name = "org.kde.plasma.icontasks";
+        config = {
+          General = {
+            launchers = [
+              "applications:org.kde.dolphin.desktop"
+              "applications:firefox.desktop"
+            ];
+          showOnlyCurrentScreen = true;
+          showOnlyCurrentDesktop = true;
+          };
+        };
+      }
+
+      # Pružná mezera (vytlačí zbytek doprava)
+      "org.kde.plasma.marginsseparator"
+
+      # Systémová část (všechny ty ikony vpravo)
+      {
+        systemTray.items = {
+          # Ikony, které jsou vidět TRVALE
+          shown = [
+            "org.kde.plasma.notifications"    # Oznámení
+            "org.kde.plasma.weather"          # Počasí
+            "org.kde.plasma.volume"           # Zvuk
+            "org.kde.plasma.brightness"       # Jas (podsvícení)
+            "org.kde.plasma.networkmanagement" # Wi-Fi
+            "org.kde.plasma.battery"          # Baterie
+          ];
+          # Ikony, které se ukážou jen, když jsou relevantní (v "šipce")
+          extra = [
+            "org.kde.plasma.clipboard"        # Schránka
+            "org.kde.plasma.devicenotifier"   # Připojená zařízení (USB)
+            "org.kde.plasma.bluetooth"        # Bluetooth
+            "org.kde.plasma.mediacontroller"  # Přehrávač médií
+            "org.kde.plasma.keyboardlayout"   # Rozvržení klávesnice (us/cz)
+            "org.kde.plasma.printmanager"     # Tiskárny
+          ];
+        };
+      }
+
+      # Digitální hodiny (úplně vpravo)
+      {
+        name = "org.kde.plasma.digitalclock";
+        config = {
+          Appearance = {
+            showSeconds = "Never";     # Vteřiny tam na screenu nejsou
+            showDate = "Always";      # Datum pod časem
+            dateStyle = "short";
+            use24hFormat = 2;         # 24h formát
+          };
+        };
+      }
+      # Widget pro zobrazení plochy
+      "org.kde.plasma.showdesktop"
+    ];
+  in
+
+{
   programs.bash = {
     enable = true;
     
@@ -37,75 +101,27 @@
       clickItemTo = "select";
       lookAndFeel = "org.kde.breezedark.desktop";
       colorScheme = "BreezeDark";
-
     };
 
-    # Konfigurace panelu
-    panels = [{
-      location = "top";
-      height = 50;
-      floating = true;
-      opacity = "opaque";
-      hiding = "autohide";
-
-      widgets = [
-        "org.kde.plasma.kickoff"
-        
-        # Připnuté aplikace
-        {
-          name = "org.kde.plasma.icontasks";
-          config = {
-            General = {
-              launchers = [
-                "applications:org.kde.dolphin.desktop"
-                "applications:firefox.desktop"
-              ];
-            };
-          };
-        }
-
-        # Pružná mezera (vytlačí zbytek doprava)
-        "org.kde.plasma.marginsseparator"
-
-        # Systémová část (všechny ty ikony vpravo)
-        {
-          systemTray.items = {
-            # Ikony, které jsou vidět TRVALE
-            shown = [
-              "org.kde.plasma.notifications"    # Oznámení
-              "org.kde.plasma.weather"          # Počasí
-              "org.kde.plasma.volume"           # Zvuk
-              "org.kde.plasma.brightness"       # Jas (podsvícení)
-              "org.kde.plasma.networkmanagement" # Wi-Fi
-              "org.kde.plasma.battery"          # Baterie
-            ];
-            # Ikony, které se ukážou jen, když jsou relevantní (v "šipce")
-            extra = [
-              "org.kde.plasma.clipboard"        # Schránka
-              "org.kde.plasma.devicenotifier"   # Připojená zařízení (USB)
-              "org.kde.plasma.bluetooth"        # Bluetooth
-              "org.kde.plasma.mediacontroller"  # Přehrávač médií
-              "org.kde.plasma.keyboardlayout"   # Rozvržení klávesnice (us/cz)
-              "org.kde.plasma.printmanager"     # Tiskárny
-            ];
-          };
-        }
-
-        # Digitální hodiny (úplně vpravo)
-        {
-          name = "org.kde.plasma.digitalclock";
-          config = {
-            Appearance = {
-              showSeconds = "Never";     # Vteřiny tam na screenu nejsou
-              showDate = "Always";      # Datum pod časem
-              dateStyle = "short";
-              use24hFormat = 2;         # 24h formát
-            };
-          };
-        }
-        # Widget pro zobrazení plochy
-        "org.kde.plasma.showdesktop"
-      ];
-    }];
+    panels = [
+      {
+        screen = 0;
+        location = "top";
+        height = 50;
+        floating = true;
+        opacity = "opaque";
+        hiding = "autohide";
+        widgets = commonWidgets;
+      }
+      {
+        screen = 1;
+        location = "top";
+        height = 50;
+        floating = true;
+        opacity = "opaque";
+        hiding = "autohide";
+        widgets = commonWidgets;
+      }
+    ];
   };
 }
