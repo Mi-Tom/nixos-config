@@ -52,6 +52,7 @@
     curl
     pciutils
   ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [kate]; # odebrani konzole z kde plasmy
   programs.neovim = {
     enable = true;
     defaultEditor = true;
