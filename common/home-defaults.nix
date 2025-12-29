@@ -107,5 +107,5 @@
         "org.kde.plasma.showdesktop"
       ];
     }];
-  }
+  };
 }
