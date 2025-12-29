@@ -41,7 +41,14 @@
     git
     fastfetch
     kdePackages.ark
+    kdePackages.spectacle
+    kdePackages.gwenview
+    vlc
     ncdu
+    wqet
+    usbutils
+    curl
+    pciutils
   ];
   programs.neovim = {
     enable = true;
