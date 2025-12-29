@@ -2,11 +2,6 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  programs.bash = {
-    completion.enable = true;
-    promptInit = builtins.readFile ./bash_settings.sh;
-  };
-
   networking.networkmanager.enable = true;
 
 
