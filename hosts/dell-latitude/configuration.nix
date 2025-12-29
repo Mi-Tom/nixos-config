@@ -13,8 +13,6 @@
   networking.hostName = "nixOS"; # Define your hostname.
 
   services.displayManager.sddm.wayland.enable = true; # Povolení Waylandu
-  services.xserver.desktopManager.plasma6.enable = false;
-  services.desktopManager.plasma6.enable = true; #vynuceni pouze waylandu
 
   environment.systemPackages = with pkgs; [
     ntfs3g
