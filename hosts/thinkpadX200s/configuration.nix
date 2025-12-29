@@ -8,11 +8,10 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "ThinkPad"; # Define your hostname.
+  networking.hostName = "ThinkPad";
 
   environment.systemPackages = with pkgs; [
     firefox
-    #  wget
   ];
   programs.firefox.enable = true;
   

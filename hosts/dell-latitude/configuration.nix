@@ -22,7 +22,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # Cesta k EFI partition (zkontroluj si ji přes lsblk, obvykle /boot nebo /boot/efi)
   boot.loader.efi.efiSysMountPoint = "/boot"; 
-}
   
   boot.supportedFilesystems = [ "ntfs" ];
   fileSystems."/mnt/shared" = {
@@ -80,13 +79,6 @@
     ];
     allowReboot = false;
   };
-
-  fileSystems."/shared" = { # nastaveni prav na sdilenem disku, pokud nefunguje dopis: "rw" - čtení i zápis; "uid=1000" - tvůj uživatel (obvykle první vytvořený má ID 1000); "gid=100" - skupina users "umask=000" - plná práva pro všechny (jednoduché řešení pro sdílený disk)
-  device = "/dev/disk/by-label/SHARED";
-  fsType = "ntfs-3g";
-  options = [ "nofail" ]; 
-};
-
   system.stateVersion = "25.11";
 }
 
