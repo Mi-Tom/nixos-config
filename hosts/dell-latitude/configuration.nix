@@ -9,6 +9,20 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.timeout = 15;
+  
+  boot.supportedFilesystems = [ "ntfs" ];
+  fileSystems."/mnt/shared" = {
+    device = "/dev/disk/by-uuid/3EA197B70D48B3DE";
+    fsType = "ntfs-3g";
+    options = [ 
+      "rw"            # Read-Write
+      "umask=000"     # Nastaví globální masku na 777 (všichni můžou vše)
+      "dmask=000"     # Práva pro složky (777)
+      "fmask=000"     # Práva pro soubory (777)
+      "nls=utf8"      # Správné kódování českých znaků
+      "nofail"        # Systém naběhne, i když disk nebude nalezen
+    ];
+  };
 
   networking.hostName = "nixOS"; # Define your hostname.
 
