@@ -5,22 +5,36 @@
     ../../common/defaults.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
+  # Vypneme systemd-boot, pokud byl zapnutý
+  boot.loader.systemd-boot.enable = false;
+
+  boot.loader.grub = {
+    enable = true;
+    # "efi" pro moderní systémy, "canTouchEfiVariables" umožní NixOS měnit boot pořadí
+    device = "nodev"; # Pro EFI se nepoužívá /dev/sda, ale nodev
+    efiSupport = true;
+    enableCryptodisk = false; # Nastav true jen pokud máš šifrovaný disk
+    
+    # Grafické téma (volitelné)
+    useOSProber = true; # DŮLEŽITÉ: Najde Windows na tvém sda4!
+  };
+
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
-  boot.loader.timeout = 15;
+  # Cesta k EFI partition (zkontroluj si ji přes lsblk, obvykle /boot nebo /boot/efi)
+  boot.loader.efi.efiSysMountPoint = "/boot"; 
+}
   
   boot.supportedFilesystems = [ "ntfs" ];
   fileSystems."/mnt/shared" = {
     device = "/dev/disk/by-uuid/3EA197B70D48B3DE";
     fsType = "ntfs-3g";
     options = [ 
-      "rw"            # Read-Write
-      "umask=000"     # Nastaví globální masku na 777 (všichni můžou vše)
-      "dmask=000"     # Práva pro složky (777)
-      "fmask=000"     # Práva pro soubory (777)
-      "nls=utf8"      # Správné kódování českých znaků
-      "nofail"        # Systém naběhne, i když disk nebude nalezen
+      "rw"
+      "umask=000"
+      "dmask=000"
+      "fmask=000"
+      "nls=utf8"
+      "nofail"
     ];
   };
 
