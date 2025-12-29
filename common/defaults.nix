@@ -47,7 +47,7 @@
     kdePackages.gwenview
     vlc
     ncdu
-    wqet
+    wget
     usbutils
     curl
     pciutils
