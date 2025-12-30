@@ -34,6 +34,8 @@
     ];
   };
 
+  networking.networkmanager.wifi.powersave = false;
+
   networking.hostName = "nixOS"; # Define your hostname.
 
   services.displayManager.sddm.wayland.enable = true; # Povolení Waylandu
