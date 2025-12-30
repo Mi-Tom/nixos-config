@@ -5,6 +5,9 @@
   programs.bash = {
     completion.enable = true;
     promptInit = builtins.readFile ./bash-settings.sh;
+
+    interactiveShellInit = ''
+      source ${pkgs.bash-ble}/share/bash-ble/ble.sh'';
   };
 
   networking.networkmanager.enable = true;
@@ -54,6 +57,7 @@
     vlc
     ncdu
     wget
+    bash-ble
     usbutils
     curl
     pciutils
