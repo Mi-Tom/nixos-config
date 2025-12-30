@@ -6,7 +6,7 @@
     completion.enable = true;
     promptInit = builtins.readFile ./bash-settings.sh;
 
-    interactiveShellInit = '' source ${pkgs.blesh}/share/bash-ble/ble.sh '';
+    interactiveShellInit = '' source ${pkgs.blesh}/share/blesh/ble.sh '';
   };
 
   networking.networkmanager.enable = true;
