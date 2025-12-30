@@ -18,6 +18,10 @@
       useOSProber = true;
     };
     timeout = 15;
+
+    # Fixy pro stabilitu Intel Wi-Fi a probouzení ze spánku
+    boot.kernelParams = [ "iwlwifi.power_save=0" ];
+    boot.extraModprobeConfig = ''options iwlwifi 11n_disable=1 swcrypto=1'';
   }; 
   
   boot.supportedFilesystems = [ "ntfs" ];
@@ -35,7 +39,23 @@
   };
 
   networking.networkmanager.wifi.backend = "iwd";
-  networking.wireless.iwd.enable = true;
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      General = {
+        EnableNetworkConfiguration = true;
+      };
+    };
+  };
+  networking.networkmanager.dispatcherScripts = [{
+    source = ''
+      case "$2" in
+        up)
+          ${pkgs.iproute2}/bin/ip route flush cache
+          ;;
+      esac
+    '';
+  }];
 
   networking.hostName = "nixOS"; # Define your hostname.
 
