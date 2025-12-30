@@ -12,8 +12,6 @@
   };
 
   networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = false;
-
 
   time.timeZone = "Europe/Prague";
 
