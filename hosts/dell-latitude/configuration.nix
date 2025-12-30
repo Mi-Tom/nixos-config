@@ -18,7 +18,7 @@
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
-  # Cesta k EFI partition (zkontroluj si ji přes lsblk, obvykle /boot nebo /boot/efi)
+
   boot.loader.efi.efiSysMountPoint = "/boot"; 
   
   boot.supportedFilesystems = [ "ntfs" ];
