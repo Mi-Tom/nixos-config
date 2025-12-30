@@ -70,6 +70,9 @@
   zramSwap.memoryPercent = 25;
   boot.kernel.sysctl."vm.swappiness" = 100;
 
+  hardware.cpu.intel.updateMicrocode = true;
+  hardware.enableRedistributableFirmware = true;
+
   # system.autoUpgrade = {
   #   enable = true;
   #   flake = "/home/michal/nixos-config";
