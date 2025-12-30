@@ -45,6 +45,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
