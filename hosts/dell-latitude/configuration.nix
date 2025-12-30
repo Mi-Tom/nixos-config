@@ -16,9 +16,7 @@
     };
     timeout = 15;
   };
-
   boot.loader.efi.canTouchEfiVariables = true;
-
   boot.loader.efi.efiSysMountPoint = "/boot"; 
   
   boot.supportedFilesystems = [ "ntfs" ];
@@ -34,6 +32,9 @@
       "nofail"
     ];
   };
+
+  networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.iwd.enable = true;
 
   networking.hostName = "nixOS"; # Define your hostname.
 
