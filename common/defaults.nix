@@ -2,6 +2,8 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  services.fwupd.enable = true;
+
   programs.bash = {
     completion.enable = true;
     promptInit = builtins.readFile ./bash-settings.sh;
