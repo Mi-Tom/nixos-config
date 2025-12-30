@@ -5,19 +5,20 @@
     ../../common/defaults.nix
   ];
 
-  boot.loader.systemd-boot.enable = false;
-
   boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    systemd-boot.enable = false;
     grub = {
       enable = true;
-      device = "nodev"; # Pro EFI se nepoužívá /dev/sda, ale nodev
+      device = "nodev";
       efiSupport = true;
       useOSProber = true;
     };
     timeout = 15;
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot"; 
+  }; 
   
   boot.supportedFilesystems = [ "ntfs" ];
   fileSystems."/mnt/shared" = {
