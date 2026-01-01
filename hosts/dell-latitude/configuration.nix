@@ -35,10 +35,10 @@
   };
 
   networking.networkmanager.wifi.powersave = false;
-
   networking.hostName = "nixOS"; # Define your hostname.
 
   services.displayManager.sddm.wayland.enable = true; # Povolení Waylandu
+  services.desktopManager.plasma6.enable = true; # KDE plasma
 
   environment.systemPackages = with pkgs; [
     ntfs3g
