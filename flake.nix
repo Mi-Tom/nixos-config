@@ -2,7 +2,8 @@
   description = "Konfigurace pro Thinkpad a Dell";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11"; 
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    dwm-config.url = "github:tvuj-nick/dwm-michal/main";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
