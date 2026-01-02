@@ -65,15 +65,11 @@
     blesh
     usbutils
     curl
-    pciutils
+    dmenu
+    st
     codeblocks
     gcc
     pkgsCross.mingwW64.stdenv.cc
-    gnumake
-    cmake
-    gdb
-    pkg-config 
-    clang-tools
   ];
   environment.plasma6.excludePackages = with pkgs.kdePackages; [kate]; # odebrani konzole z kde plasmy
   programs.neovim = {
