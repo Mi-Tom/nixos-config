@@ -54,7 +54,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "*"; # Nutné pro verzi 23.11 a novější
+    config.common.default = "*";
   };
   services.flatpak.enable = true;
 
@@ -77,7 +77,6 @@
     gcc
     pkgsCross.mingwW64.stdenv.cc
   ];
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [kate]; # odebrani konzole z kde plasmy
   programs.neovim = {
     enable = true;
     defaultEditor = true;

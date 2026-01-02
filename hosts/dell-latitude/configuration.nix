@@ -54,7 +54,7 @@
     libreoffice-qt
     texliveFull
   ];
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [konsole]; # odebrani konzole z kde plasmy
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [konsole kate]; # odebrani konzole a kate z kde plasmy
   environment.variables.TERMINAL = "kitty"; # nastaveni kitty jako defaultniho terminalu
   programs.firefox.enable = true;
 
