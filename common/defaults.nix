@@ -76,6 +76,7 @@
     codeblocks
     gcc
     pkgsCross.mingwW64.stdenv.cc
+    maim slop xclip libnotify /*nastroje pro fotky obrazovky v dwm*/ 
   ];
   programs.neovim = {
     enable = true;
