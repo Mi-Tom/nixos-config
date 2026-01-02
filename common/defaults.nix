@@ -50,6 +50,12 @@
 
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*"; # Nutné pro verzi 23.11 a novější
+  };
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
