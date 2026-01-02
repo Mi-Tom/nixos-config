@@ -10,6 +10,8 @@
 
   networking.hostName = "ThinkPad";
 
+  services.displayManager.ly.enable = true;
+
   environment.systemPackages = with pkgs; [
     firefox
     kdePackages.konsole

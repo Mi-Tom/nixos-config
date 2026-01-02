@@ -19,7 +19,6 @@
   hardware.bluetooth.powerOnBoot = true;
 
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
   nixpkgs.overlays = [
     (final: prev: {
       dwm = inputs.dwm-config.packages.${pkgs.system}.default;
