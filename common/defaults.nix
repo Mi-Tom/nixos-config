@@ -19,6 +19,7 @@
   hardware.bluetooth.powerOnBoot = true;
 
   services.xserver.enable = true;
+  services.xserver.windowManager.dwm.enable = true;
   nixpkgs.overlays = [
     (final: prev: {
       dwm = inputs.dwm-config.packages.${pkgs.system}.default;

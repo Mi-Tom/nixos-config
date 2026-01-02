@@ -14,7 +14,6 @@
 
   environment.systemPackages = with pkgs; [
     firefox
-    kdePackages.konsole
   ];
   programs.firefox.enable = true;
   
