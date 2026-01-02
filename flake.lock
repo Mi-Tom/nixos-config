@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1767343321,
-        "narHash": "sha256-G+/cvwTFuRjLUteF6LDM5M9OcCfxkxgYn/0sJW3h7lc=",
+        "lastModified": 1767387698,
+        "narHash": "sha256-FUNGSlJiCvAJri9jYFGR0S3gTEmEJltXhLgps2uv180=",
         "owner": "Mi-Tom",
         "repo": "dwm-config",
-        "rev": "f296f5a26499a0d82f767ce0e530584b4e4489ae",
+        "rev": "e1311abded3aea605d178efec36c4e915788891c",
         "type": "github"
       },
       "original": {
