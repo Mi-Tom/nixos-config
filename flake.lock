@@ -1,6 +1,41 @@
 {
   "nodes": {
+    "dwm-config": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1767343321,
+        "narHash": "sha256-G+/cvwTFuRjLUteF6LDM5M9OcCfxkxgYn/0sJW3h7lc=",
+        "owner": "Mi-Tom",
+        "repo": "dwm-config",
+        "rev": "f296f5a26499a0d82f767ce0e530584b4e4489ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mi-Tom",
+        "ref": "main",
+        "repo": "dwm-config",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1767116409,
+        "narHash": "sha256-5vKw92l1GyTnjoLzEagJy5V5mDFck72LiQWZSOnSicw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cad22e7d996aea55ecab064e84834289143e44a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1766885793,
         "narHash": "sha256-P6RVkrM9JLCW6xBjSwHfgTOQ1JwBUma5xe5LI8xAPC0=",
@@ -18,7 +53,8 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "dwm-config": "dwm-config",
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },

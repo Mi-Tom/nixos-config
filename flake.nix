@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    dwm-config.url = "https://github.com/Mi-Tom/dwm-config.git";
+    dwm-config.url = "github:Mi-Tom/dwm-config/main";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
