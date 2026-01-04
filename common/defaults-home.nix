@@ -51,9 +51,8 @@
       };
 
       git_branch = {
-        symbol = "git:\\("; 
         style = "bold yellow";
-        format = "on [$symbol$branch]($style)\\) "; 
+        format = "on [\\($branch\\)]($style) ";
       };
 
       character = {
