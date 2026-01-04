@@ -52,7 +52,7 @@
 
       git_branch = {
         style = "bold yellow";
-        format = "on [\\($branch\\)]($style) ";
+        format = "[\\($branch\\)]($style) ";
       };
 
       character = {
