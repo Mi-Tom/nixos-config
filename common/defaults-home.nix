@@ -1,53 +1,63 @@
 { pkgs, ... }:
 
 {
-
   home.username = "michal";
   home.homeDirectory = "/home/michal";
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 
-/*<--------------------------------------------nastaveni terminalu------------------------------------------------>*/
+  home.enableNixpkgsReleaseCheck = false;
+
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    initExtra = ''
+      if [ -f ${pkgs.blesh}/share/blesh/ble.sh ]; then
+        source ${pkgs.blesh}/share/blesh/ble.sh
+      fi
+    '';
+  };
+
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
-    enableZshIntegration = true;
 
     settings = {
-      # Formát zůstává stejný, měníme styly u jednotlivých modulů
-      format = "[$time]($style) $username@$hostname $directory$git_branch\n$character";
+
+      add_newline = false;
+
+      format = "$time$username$hostname $directory$git_branch\n$character";
 
       time = {
         disabled = false;
         time_format = "%H:%M:%S";
-        style = "bold white"; # Čas bude bílý
-        format = "[$time] ";
+        style = "bold white";
+        format = "$time "; 
       };
 
       username = {
         show_always = true;
-        style_user = "bold green"; # Jméno bude zelené
+        style_user = "bold green";
         format = "[$user]($style)";
       };
 
       hostname = {
         ssh_only = false;
-        style = "bold green"; # Hostitel taky zeleně, aby to ladilo k jménu
+        style = "bold green";
         format = "@[$hostname]($style) ";
       };
 
       directory = {
-        style = "bold cyan"; # Cesta bude azurová
+        style = "bold cyan";
       };
 
       git_branch = {
-        symbol = "git:(";
-        style = "bold yellow"; # Větev bude žlutá
-        format = "on [$symbol$branch]($style)) ";
+        style = "bold yellow";
+        format = "[\\($branch\\)]($style) ";
       };
 
       character = {
-        success_symbol = "[\\$](bold white)"; # Dolar bude bílý (při úspěchu)
-        error_symbol = "[\\$](bold red)";    # Při chybě zůstane červený (lepší pro orientaci)
+        success_symbol = "[\\$](bold white)";
+        error_symbol = "[\\$](bold red)";
       };
     };
   };
