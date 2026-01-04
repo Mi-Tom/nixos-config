@@ -12,7 +12,7 @@
     enable = true;
     enableCompletion = true;
   };
-  
+
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
@@ -20,11 +20,11 @@
 
     settings = {
       # Formát zůstává stejný, měníme styly u jednotlivých modulů
-      format = "[$time]($style) $username@$hostname $directory$git_branch\n$character";
+      format = "$time$username$hostname $directory$git_branch\n$character";
 
       time = {
         disabled = false;
-        time_format = "%H:%M:%S";
+        time_format = "%H:%M";
         style = "bold white"; # Čas bude bílý
         format = "[$time] ";
       };
