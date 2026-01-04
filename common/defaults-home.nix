@@ -22,6 +22,9 @@
     enableBashIntegration = true;
 
     settings = {
+
+      add_newline = false;
+
       format = "$time$username$hostname $directory$git_branch\n$character";
 
       time = {
@@ -48,9 +51,9 @@
       };
 
       git_branch = {
-        symbol = "git:(";
+        symbol = "git:\\("; 
         style = "bold yellow";
-        format = "on [$symbol$branch]($style) ";
+        format = "on [$symbol$branch]($style)\\) "; 
       };
 
       character = {
