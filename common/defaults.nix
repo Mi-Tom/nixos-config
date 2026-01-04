@@ -2,14 +2,8 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  services.fwupd.enable = true;
+  services.fwupd.enable = true; /*automatizace aktualizace BIOSU/UEFI*/
 
-  programs.bash = {
-    completion.enable = true;
-    promptInit = builtins.readFile ./bash-settings.sh;
-
-    interactiveShellInit = '' source ${pkgs.blesh}/share/blesh/ble.sh '';
-  };
 
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
