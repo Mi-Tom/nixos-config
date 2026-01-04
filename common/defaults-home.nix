@@ -5,7 +5,17 @@
   home.homeDirectory = "/home/michal";
   home.stateVersion = "25.11";
 
-  programs.bash.enable = true;
+  home.enableNixpkgsReleaseCheck = false;
+
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    initExtra = ''
+      if [ -f ${pkgs.blesh}/share/blesh/ble.sh ]; then
+        source ${pkgs.blesh}/share/blesh/ble.sh
+      fi
+    '';
+  };
 
   programs.starship = {
     enable = true;
@@ -16,9 +26,9 @@
 
       time = {
         disabled = false;
-        time_format = "%H:%M";
+        time_format = "%H:%M:%S";
         style = "bold white";
-        format = "[\\[$time\\]]($style) "; 
+        format = "$time "; 
       };
 
       username = {
@@ -40,7 +50,7 @@
       git_branch = {
         symbol = "git:(";
         style = "bold yellow";
-        format = "on [$symbol$branch]($style)) ";
+        format = "on [$symbol$branch]($style) ";
       };
 
       character = {

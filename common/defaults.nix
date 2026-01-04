@@ -2,6 +2,8 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   services.fwupd.enable = true; /*automatizace aktualizace BIOSU/UEFI*/
 
 
@@ -17,7 +19,7 @@
   services.xserver.windowManager.dwm.enable = true;
   nixpkgs.overlays = [
     (final: prev: {
-      dwm = inputs.dwm-config.packages.${pkgs.system}.default;
+      dwm = inputs.dwm-config.packages.${final.stdenv.hostPlatform.system}.default;
     })
   ];
   services.xserver.xkb = {
@@ -63,7 +65,6 @@
     vlc
     ncdu
     wget
-    blesh
     usbutils
     curl
     dmenu
@@ -72,6 +73,9 @@
     gcc
     pkgsCross.mingwW64.stdenv.cc
     maim slop xclip libnotify /*nastroje pro fotky obrazovky v dwm*/ 
+    /*fonty*/
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
   ];
   programs.neovim = {
     enable = true;
