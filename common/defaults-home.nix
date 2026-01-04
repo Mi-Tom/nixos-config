@@ -4,7 +4,7 @@
 
   home.username = "michal";
   home.homeDirectory = "/home/michal";
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 
 /*<--------------------------------------------nastaveni terminalu------------------------------------------------>*/
   programs.starship = {
