@@ -7,6 +7,12 @@
   home.stateVersion = "25.11";
 
 /*<--------------------------------------------nastaveni terminalu------------------------------------------------>*/
+  # AKTIVACE BASH KONFIGURACE PŘES HOME MANAGER
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+  };
+  
   programs.starship = {
     enable = true;
     enableBashIntegration = true;

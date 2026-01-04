@@ -18,8 +18,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/thinkpadX200s/configuration.nix
-	  home-manager.nixosModules.home-manager
-          {
+          home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.michal = import ./common/defaults-home.nix;
@@ -33,13 +32,12 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/dell-latitude/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
+          home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.michal = import ./common/defaults-home.nix;
           }
-	];
+        ];
       };
     };
   };
