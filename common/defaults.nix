@@ -51,12 +51,12 @@
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
 
+  services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = "*";
   };
-  services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
