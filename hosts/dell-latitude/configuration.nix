@@ -34,7 +34,6 @@
     ];
   };
 
-  networking.networkmanager.wifi.powersave = false;
   networking.hostName = "nixOS"; # Define your hostname.
 
   services.displayManager.sddm.enable = true;
