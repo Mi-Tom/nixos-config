@@ -22,7 +22,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.michal = import .common/defaults-home.nix;
+            home-manager.users.michal = import ./common/defaults-home.nix;
           }
         ];
       };
@@ -37,7 +37,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.michal = import .common/defaults-home.nix;
+            home-manager.users.michal = import ./common/defaults-home.nix;
           }
 	];
       };

@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+
+  home.username = "michal";
+  home.homeDirectory = "/home/michal";
+  home.stateVersion = "24.11";
+
+/*<--------------------------------------------nastaveni terminalu------------------------------------------------>*/
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
