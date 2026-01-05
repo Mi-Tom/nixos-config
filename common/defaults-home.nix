@@ -29,7 +29,7 @@
 
       time = {
         disabled = false;
-        time_format = "%H:%M:%S";
+        time_format = "%H:%M";
         style = "bold white";
         format = "$time "; 
       };

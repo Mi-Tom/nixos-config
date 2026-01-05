@@ -73,14 +73,15 @@
     gcc
     pkgsCross.mingwW64.stdenv.cc
     maim slop xclip libnotify /*nastroje pro fotky obrazovky v dwm*/ 
-    /*fonty*/
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
   ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;
   };
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+  ];
 
   nix.gc = {
     automatic = true;
