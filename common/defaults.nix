@@ -6,7 +6,6 @@
 
   services.fwupd.enable = true; /*automatizace aktualizace BIOSU/UEFI*/
 
-
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
 
@@ -38,9 +37,12 @@
 
   services.libinput.enable = true;
 
+  programs.zsh.enable = true;
+
   users.users.michal = {
     isNormalUser = true;
     description = "Michal";
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     packages = with pkgs; [tree];
   };
