@@ -44,7 +44,6 @@
     ntfs3g
     firefox
     blender
-    vlc
     spotify
     discord
     kitty

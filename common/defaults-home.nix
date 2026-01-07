@@ -1,64 +1,92 @@
-{ pkgs, ... }:
-
+{ pkgs, inputs, ... }:
 {
-  home.username = "michal";
-  home.homeDirectory = "/home/michal";
-  home.stateVersion = "25.11";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  home.enableNixpkgsReleaseCheck = false;
+  nixpkgs.hostPlatform = "x86_64-linux";
 
-  programs.bash = {
+  services.fwupd.enable = true; /*automatizace aktualizace BIOSU/UEFI*/
+
+
+  networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false;
+
+  time.timeZone = "Europe/Prague";
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  services.xserver.enable = true;
+  services.xserver.windowManager.dwm.enable = true;
+  nixpkgs.overlays = [
+    (final: prev: {
+      dwm = inputs.dwm-config.packages.${final.stdenv.hostPlatform.system}.default;
+    })
+  ];
+  services.xserver.xkb = {
+    layout = "us,cz";
+    variant = ",qwerty";
+    options = "grp:win_space_toggle";
+  };
+  console.useXkbConfig = true;
+
+  services.printing.enable = true;
+
+  services.pipewire = {
     enable = true;
-    enableCompletion = true;
-    initExtra = ''
-      if [ -f ${pkgs.blesh}/share/blesh/ble.sh ]; then
-        source ${pkgs.blesh}/share/blesh/ble.sh
-      fi
-    '';
+    pulse.enable = true;
   };
 
-  programs.starship = {
+  services.libinput.enable = true;
+
+  users.users.michal = {
+    isNormalUser = true;
+    description = "Michal";
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    packages = with pkgs; [tree];
+  };
+
+  nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
+
+  services.flatpak.enable = true;
+  xdg.portal = {
     enable = true;
-    enableBashIntegration = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
 
-    settings = {
+  environment.systemPackages = with pkgs; [
+    neovim
+    git
+    fastfetch
+    kdePackages.ark
+    kdePackages.spectacle
+    kdePackages.gwenview
+    vlc
+    ncdu
+    wget
+    usbutils
+    curl
+    dmenu
+    st
+    codeblocks
+    gcc
+    pkgsCross.mingwW64.stdenv.cc
+    maim slop xclip libnotify /*nastroje pro fotky obrazovky v dwm*/ 
+  ];
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+  ];
 
-      add_newline = false;
-
-      format = "$time$username$hostname $directory$git_branch\n$character";
-
-      time = {
-        disabled = false;
-        time_format = "%H:%M";
-        style = "bold white";
-        format = "$time "; 
-      };
-
-      username = {
-        show_always = true;
-        style_user = "bold green";
-        format = "[$user]($style)";
-      };
-
-      hostname = {
-        ssh_only = false;
-        style = "bold green";
-        format = "@[$hostname]($style) ";
-      };
-
-      directory = {
-        style = "bold cyan";
-      };
-
-      git_branch = {
-        style = "bold yellow";
-        format = "[\\($branch\\)]($style) ";
-      };
-
-      character = {
-        success_symbol = "[\\$](bold white)";
-        error_symbol = "[\\$](bold red)";
-      };
-    };
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 5d";
   };
 }
+
