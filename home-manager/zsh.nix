@@ -35,7 +35,7 @@
   };
 
   programs.zsh.shellAliases = {
-    nrsf = "sudo nixos-rebuild switch --flake .";
-    hmsf = "home-manager switch --flake .";
+    nrsf = "sudo nixos-rebuild switch --flake";
+    hmsf = "home-manager switch --flake";
   };
 }
