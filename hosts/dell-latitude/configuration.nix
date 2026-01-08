@@ -52,6 +52,7 @@
     docker-compose
     libreoffice-qt
     texliveFull
+    obsidian
   ];
   environment.plasma6.excludePackages = with pkgs.kdePackages; [konsole kate]; # odebrani konzole a kate z kde plasmy
   environment.variables.TERMINAL = "kitty"; # nastaveni kitty jako defaultniho terminalu
