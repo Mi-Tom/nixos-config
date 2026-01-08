@@ -32,5 +32,5 @@
       PROMPT='%F{white}%D{%H:%M}%f %F{green}%n@%m%f %F{cyan}%~%f$(parse_git_status)
 %F{white}$%f '
     '';
-  }
+  };
 }
