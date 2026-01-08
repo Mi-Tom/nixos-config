@@ -16,11 +16,6 @@
 
   services.xserver.enable = true;
   services.xserver.windowManager.dwm.enable = true;
-  nixpkgs.overlays = [
-    (final: prev: {
-      dwm = inputs.dwm-config.packages.${final.stdenv.hostPlatform.system}.default;
-    })
-  ];
   services.xserver.xkb = {
     layout = "us,cz";
     variant = ",qwerty";
@@ -73,8 +68,7 @@
     st
     codeblocks
     gcc
-    pkgsCross.mingwW64.stdenv.cc
-    maim slop xclip libnotify /*nastroje pro fotky obrazovky v dwm*/ 
+    pkgsCross.mingwW64.stdenv.cc 
   ];
   programs.neovim = {
     enable = true;

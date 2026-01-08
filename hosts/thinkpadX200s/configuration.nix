@@ -12,12 +12,18 @@
   networking.hostName = "ThinkPad";
 
   services.displayManager.ly.enable = true;
+  nixpkgs.overlays = [
+    (final: prev: {
+      dwm = inputs.dwm-config.packages.${final.stdenv.hostPlatform.system}.default;
+    })
+  ];
 
   environment.systemPackages = with pkgs; [
     firefox
     acpi       # Rychlý příkaz 'acpi -b' pro zjištění procent a času
     powertop   # Spusť 'sudo powertop', přepni se na záložku 'Overview' a uvidíš aktuální odběr ve Wattech (W)
     lm_sensors # Příkaz 'sensors' pro sledování teploty, aby větrák zbytečně nežral proud
+    maim slop xclip libnotify /*nastroje pro fotky obrazovky v dwm*/
   ];
   programs.firefox.enable = true;
   
