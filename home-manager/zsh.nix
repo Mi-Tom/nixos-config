@@ -29,7 +29,7 @@
         echo " %F{yellow}($branch$status_symbol)%f"
       }
 
-      PROMPT='%F{white}%D{%H:%M}%f %F{green}%n@%m%f %F{cyan}%~%f$(parse_git_status)
+      PROMPT='%F{white}%D{%H:%M:%S}%f %F{green}%n@%m%f %F{cyan}%~%f$(parse_git_status)
 %F{white}$%f '
     '';
   };
