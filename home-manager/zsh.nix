@@ -7,6 +7,8 @@
     syntaxHighlighting.enable = true;
 
     initExtra = ''
+      setopt PROMPT_SUBST
+
       parse_git_status() {
         if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then return; fi
         local branch=$(git branch --show-current 2>/dev/null)
@@ -22,12 +24,13 @@
         else
           status_symbol="*"
         fi
-        echo " (%F{yellow}$branch$status_symbol%f)"
+        
+        # Vrátí žlutou větev se symbolem v závorkách
+        echo " %F{yellow}($branch$status_symbol)%f"
       }
 
-      # PS1 - %F{color} začíná barvu, %f končí
       PROMPT='%F{white}%D{%H:%M}%f %F{green}%n@%m%f %F{cyan}%~%f$(parse_git_status)
-%F{white}$%f'
+%F{white}$%f '
     '';
-  };
+  }
 }
