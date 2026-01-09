@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ../../home-manager/core.nix 
-    ../../home-manager/zsh.nix 
+    ../../modules/home-manager/core.nix 
+    ../../modules/home-manager/zsh.nix 
   ];
   home.username = "michal";
   home.homeDirectory = "/home/michal";
