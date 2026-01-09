@@ -17,7 +17,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/laptop/thinkpadX200s/configuration.nix
+          ./hosts/laptop/thinkpadX200s
         ];
       };
 
@@ -25,7 +25,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/laptop/dell-latitude/configuration.nix
+          ./hosts/laptop/dell-latitude
         ];
       };
     };
@@ -34,13 +34,13 @@
       "michal@thinkpadX200s" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
-        modules = [ ./hosts/thinkpadX200s/home.nix ];
+        modules = [ ./hosts/laptop/thinkpadX200s/home.nix ];
       };
 
       "michal@dell-latitude" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
-        modules = [ ./hosts/dell-latitude/home.nix ];
+        modules = [ ./hosts/laptop/dell-latitude/home.nix ];
       };
     };
 
