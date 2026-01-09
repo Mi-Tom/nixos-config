@@ -2,7 +2,14 @@
 {  
   imports = [
     ./hardware-configuration.nix
-    ../../../modules/nixos/defaults.nix
+    ../../../modules/nixos/core.nix
+    ../../../modules/nixos/xserver.nix
+    ../../../modules/nixos/kdePlasma.nix
+    ../../../modules/nixos/network.nix
+    ../../../modules/nixos/audio.nix
+    ../../../modules/nixos/users.nix
+    ../../../modules/nixos/flatpak.nix
+    ../../../modules/nixos/docker.nix
   ];
 
   boot.loader = {
@@ -20,6 +27,7 @@
     timeout = 15;
   }; 
   
+  environment.systemPackages = [ pkgs.ntfs3g ];
   boot.supportedFilesystems = [ "ntfs" ];
   fileSystems."/mnt/shared" = {
     device = "/dev/disk/by-uuid/3EA197B70D48B3DE";
@@ -36,33 +44,8 @@
 
   networking.hostName = "nixOS"; # Define your hostname.
 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true; # Povolení Waylandu
-  services.desktopManager.plasma6.enable = true; # KDE plasma
-
-  environment.systemPackages = with pkgs; [
-    ntfs3g
-    firefox
-    blender
-    spotify
-    discord
-    kitty
-    vscode
-    gitkraken
-    docker-compose
-    libreoffice-qt
-    texliveFull
-    obsidian
-  ];
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [konsole kate]; # odebrani konzole a kate z kde plasmy
-  environment.variables.TERMINAL = "kitty"; # nastaveni kitty jako defaultniho terminalu
-  programs.firefox.enable = true;
-
-  virtualisation.docker = {
-    enable = true;
-    listenOptions = [ "/run/docker.sock" ];
-  };
-  systemd.services.docker.unitConfig.StopIdleTimeoutSec = "300";
+  services.fwupd.enable = true; /*automatizace aktualizace BIOSU/UEFI*/
+  services.printing.enable = true;
 
   zramSwap.enable = true;
   zramSwap.algorithm = "zstd";
@@ -72,16 +55,6 @@
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
 
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   flake = "/home/michal/nixos-config";
-  #   dates = "weekly";
-  #   flags = [
-  #     "--update-input" "nixpkgs"
-  #     "--commit-lock-file"
-  #   ];
-  #   allowReboot = false;
-  # };
   system.stateVersion = "25.11";
 }
 
