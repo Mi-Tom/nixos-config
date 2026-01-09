@@ -17,7 +17,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/thinkpadX200s/configuration.nix
+          ./hosts/laptop/thinkpadX200s/configuration.nix
         ];
       };
 
@@ -25,7 +25,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/dell-latitude/configuration.nix
+          ./hosts/laptop/dell-latitude/configuration.nix
         ];
       };
     };
